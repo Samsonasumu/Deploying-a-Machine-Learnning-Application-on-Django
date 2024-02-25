@@ -9,7 +9,7 @@ This project is a demonstration of how to deploy a machine learning application 
 1. Clone the repository:
 
 ```
-git clone https://github.com/your_username/Deploying-a-Machine-Learnning-Application-on-Django.git
+https://github.com/Samsonasumu/Deploying-a-Machine-Learnning-Application-on-Django.git
 ```
 
 2. Install the required packages:
