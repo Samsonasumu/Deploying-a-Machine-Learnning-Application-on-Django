@@ -9,7 +9,7 @@ This project is a demonstration of how to deploy a machine learning application 
 1. Clone the repository:
 
 ```
-https://github.com/Samsonasumu/Deploying-a-Machine-Learnning-Application-on-Django.git
+git clone https://github.com/Samsonasumu/Deploying-a-Machine-Learnning-Application-on-Django.git
 ```
 
 2. Install the required packages:
@@ -25,6 +25,9 @@ python manage.py runserver
 ```
 
 4. Navigate to http://localhost:8000/ in your web browser to view the application.
+   ![ML1](https://github.com/Samsonasumu/Deploying-a-Machine-Learnning-Application-on-Django/assets/99386103/454ffefe-f2b2-4eee-8884-5f69472638f6)
+![ml2](https://github.com/Samsonasumu/Deploying-a-Machine-Learnning-Application-on-Django/assets/99386103/2937fe52-81e2-484e-bd47-53e3e88adfec)
+
 
 ## Usage
 
