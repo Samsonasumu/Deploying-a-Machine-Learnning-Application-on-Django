@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block main %}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Prediction Results</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>Prediction Input:</h5>
+                <div>  Age: <span id="sl"></span></div>
+                <div> air_pollution: <span id="sw"></span></div>
+                <div> alcohol_use: <span id="pl"></span></div>
+                <div> genetic_risk: <span id="pw"></span></div>
+                <div> chronic_lung_disease: <span id="cw"></span></div>
+
+                
+                <h5 class="pt-3">Prediction Classification:</h5>
+                <div id="prediction"></div>
+ 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a class="btn btn-primary" href="/results" role="button">View DB</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container pt-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <h1>Iris Prediction</h1>
+            <form action="" id="post-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="Age">Age</label>
+                    <input type="number" step="0.1" class="form-control" id="Age" placeholder="Age in years" required>
+                </div>
+ 
+                <div class="form-group">
+                    <label for="air_pollution">air_pollution  </label>
+                    <input type="number" step="0.1" class="form-control" id="air_pollution" placeholder="air_pollution" required>
+                </div>
+                <div class="form-group">
+                    <label for="alcohol_use">alcohol_use</label>
+                    <input type="number" step="0.1" class="form-control" id="alcohol_use" placeholder="alcohol_use" required>
+                </div>
+                <div class="form-group">
+                    <label for="genetic_risk">genetic_risk</label>
+                    <input type="number" step="0.1" class="form-control" id="genetic_risk" placeholder="genetic_risk" required>
+                </div>
+                <div class="form-group">
+                    <label for="chronic_lung_disease">chronic_lung_disease</label>
+                    <input type="number" step="0.1" class="form-control" id="chronic_lung_disease" placeholder="chronic_lung_disease" required>
+                </div>
+                <button type="submit" value="Submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).on('submit', '#post-form',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST', 
+             
+
+            url:'{% url "myapp:submit_prediction" %}',
+            data:{
+                Age:$('#Age').val(),
+                air_pollution:$('#air_pollution').val(),
+                alcohol_use:$('#alcohol_use').val(),
+                genetic_risk:$('#genetic_risk').val(),
+                chronic_lung_disease:$('#chronic_lung_disease').val(),
+
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                action: 'post'
+            },
+            success:function(json) {
+                document.forms["post-form"].reset();
+                document.getElementById("prediction").innerHTML = json['result']
+                document.getElementById("sl").innerHTML = json['Age']
+                document.getElementById("sw").innerHTML = json['air_pollution']
+                document.getElementById("pl").innerHTML = json['alcohol_use']
+                document.getElementById("pl").innerHTML = json['genetic_risk']
+                document.getElementById("pw").innerHTML = json['chronic_lung_disease']
+            },
+            error : function(xhr,errmsg,err) {
+
+            }
+        });
+    })
+</script>
+
+{% endblock %}
+
