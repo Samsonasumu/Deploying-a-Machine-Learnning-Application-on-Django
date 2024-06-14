@@ -28,6 +28,9 @@ python manage.py runserver
    ![ML1](https://github.com/Samsonasumu/Deploying-a-Machine-Learnning-Application-on-Django/assets/99386103/454ffefe-f2b2-4eee-8884-5f69472638f6)
 ![ml2](https://github.com/Samsonasumu/Deploying-a-Machine-Learnning-Application-on-Django/assets/99386103/2937fe52-81e2-484e-bd47-53e3e88adfec)
 
+database 
+
+![image](https://github.com/Samsonasumu/Deploying-a-Machine-Learnning-Application-on-Django/assets/99386103/cbff5291-2374-4ed5-9287-cce3a5728ba0)
 
 ## Usage
 
